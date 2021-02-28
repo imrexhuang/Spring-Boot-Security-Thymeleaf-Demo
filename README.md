@@ -18,7 +18,7 @@ GitHub地址：[https://github.com/Smith-Cruise/Spring-Boot-Security-Thymeleaf-D
 
 ## 项目演示
 
-如果想要直接体验，直接 `clone` 项目，运行 `mvn spring-boot:run` 命令即可进行访问，网址规则自行看教程后面
+如果想要直接体验，直接 `clone` 项目，运行 `mvn spring-boot:run` 命令即可进行访问 http://localhost:8080，网址规则自行看教程后面
 
 ***首页***
 
@@ -119,7 +119,7 @@ Spring Security实现了一系列的过滤器链，就按照下面顺序一个�
     <name>security-demo</name>
     <description>Demo project for Spring Boot &amp; Spring Security</description>
 
-    <!--指定JDK版本，大家可以改成自己的-->
+    <!--預設JDK版本是11，可自行修改成自己開發環境版本-->
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -152,7 +152,7 @@ Spring Security实现了一系列的过滤器链，就按照下面顺序一个�
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--开发的热加载配置-->
+        <!--开发的热加载配置，LiveReload server default port:35729-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
