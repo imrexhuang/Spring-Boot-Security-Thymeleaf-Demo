@@ -18,7 +18,7 @@ GitHub地址：[https://github.com/Smith-Cruise/Spring-Boot-Security-Thymeleaf-D
 
 ## 项目演示
 
-如果想要直接体验，直接 `clone` 项目，运行 `mvn spring-boot:run` 命令即可进行访问 http://localhost:8080，网址规则自行看教程后面
+如果想要直接体验，直接 `clone` 项目，运行 `mvn spring-boot:run` 命令即可进行访问 http://localhost:8080 ，网址规则自行看教程后面
 
 ***首页***
 
@@ -62,6 +62,10 @@ Spring Security实现了一系列的过滤器链，就按照下面顺序一个�
 * `User.class` ：注意这个类不是我们自己写的，而是Spring Security官方提供的，他提供了一些基础的功能，我们可以通过继承这个类来扩充方法。详见代码中的 `CustomUser.java`
 * `UserDetailsService.class`： Spring Security官方提供的一个接口，里面只有一个方法`loadUserByUsername()` ，Spring Security会调用这个方法来获取数据库中存在的数据，然后和用户POST过来的用户名密码进行比对，从而判断用户的用户名密码是否正确。所以我们需要自己实现`loadUserByUsername()` 这个方法。详见代码中的 `CustomUserDetailsService.java`。
 
+***程式用途說明***
+
+* `org.inlighting.security.service.Database.java`： 模擬資料庫
+* `org.inlighting.security.security底下的IsAdmin.java、IsEditor.java、IsReviewer.java、IsUser.java`： 定義角色的annotation，UserController.java會使用到
 ## 项目逻辑
 
 为了体现权限区别，我们通过HashMap构造了一个数据库，里面包含了4个用户
