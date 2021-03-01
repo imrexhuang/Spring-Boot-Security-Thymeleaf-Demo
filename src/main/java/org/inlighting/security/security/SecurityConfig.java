@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
+import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 /**
  * 开启方法注解支持，我们设置prePostEnabled = true是为了后面能够使用hasRole()这类表达式
@@ -64,6 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  * 后面再通过方法注解的方式来控制权限。
                  */
                 .authorizeRequests().anyRequest().permitAll()
+                //如果希望所有的HTTP methods都要被Spring Security CSRF防護
+                //https://matthung0807.blogspot.com/2019/11/spring-security-csrf-default-protection.html
+                //.and()
+                //.csrf().requireCsrfProtectionMatcher(AnyRequestMatcher.INSTANCE)
                 .and()
                 .exceptionHandling().accessDeniedPage("/403"); // 权限不足自动跳转403
     }

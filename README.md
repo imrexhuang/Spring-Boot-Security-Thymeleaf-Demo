@@ -66,6 +66,10 @@ Spring Security实现了一系列的过滤器链，就按照下面顺序一个�
 
 * `org.inlighting.security.service.Database.java`： 模擬資料庫
 * `org.inlighting.security.security底下的IsAdmin.java、IsEditor.java、IsReviewer.java、IsUser.java`： 定義角色的annotation，UserController.java會使用到
+* `org.inlighting.security.security.SecurityConfig.java`： 基本參數設定、密碼加密方式(Spring Security 5預設是BCryptPasswordEncoder)
+* `org.inlighting.security.security.CustomUserDetailsService.java`： implements UserDetailsService
+* `org.inlighting.security.controller.UserController.java`： 設定RequestMapping路由
+
 ## 项目逻辑
 
 为了体现权限区别，我们通过HashMap构造了一个数据库，里面包含了4个用户
