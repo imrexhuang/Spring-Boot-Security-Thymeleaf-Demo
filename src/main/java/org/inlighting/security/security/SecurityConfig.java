@@ -71,6 +71,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf().requireCsrfProtectionMatcher(AnyRequestMatcher.INSTANCE)
                 .and()
                 .exceptionHandling().accessDeniedPage("/403"); // 权限不足自动跳转403
+
+        // https://www.baeldung.com/spring-security-session
+        //同個使用者一次只能一個session登入，重複原本登入的會回應This session has been expired (possibly due to multiple concurrent logins being attempted as the same user).
+        http.sessionManagement().maximumSessions(1);
     }
 
     /**
