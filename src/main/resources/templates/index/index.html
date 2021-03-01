@@ -6,10 +6,16 @@
 </head>
 <body>
 <a th:href="@{/login}">Login</a><br/>
-<a th:href="@{/logout}">Logout</a><br/>
 <a th:href="@{/user/home}">Home</a><br/>
 <a th:href="@{/user/editor}">Editor</a><br/>
 <a th:href="@{/user/reviewer}">Reviewer</a><br/>
-<a th:href="@{/user/admin}">Admin</a><br/>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+  <a th:href="@{/user/admin}">Admin</a><br/>
+</div>
+<div sec:authorize="isAuthenticated()">
+  <a th:href="@{/logout}">Logout</a><br/>
+</div>
+
 </body>
 </html>
