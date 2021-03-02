@@ -73,8 +73,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/403"); // 权限不足自动跳转403
 
         // https://www.baeldung.com/spring-security-session
-        //同個使用者一次只能一個session登入，重複原本登入的會回應This session has been expired (possibly due to multiple concurrent logins being attempted as the same user).
-        http.sessionManagement().maximumSessions(1);
+        // https://docs.spring.io/spring-security/site/docs/4.2.20.RELEASE/apidocs/org/springframework/security/config/annotation/web/configurers/SessionManagementConfigurer.ConcurrencyControlConfigurer.html
+        http.sessionManagement()
+                .invalidSessionUrl("/login") //session失效的頁面
+                .maximumSessions(1) //同個使用者一次只能一個session登入，如果false後踢前，原本登入的會回應This session has been expired (possibly due to multiple concurrent logins being attempted as the same user).
+                .maxSessionsPreventsLogin(true); //false表示後踢前、true表示不允許後者登入
     }
 
     /**
